@@ -68,6 +68,11 @@ app.config(function($routeProvider) {
 		controller : 'xxxxxController',
 		reloadOnSearch : false
 	});
+	$routeProvider.when('/geolocation', {
+		templateUrl : 'views/pocMF/geoLocation.html',
+		controller : 'geoLocationController',
+		reloadOnSearch : false
+	});
 	// ===== DemoUI ================================
 	$routeProvider.when('/scroll', {
 		templateUrl : 'views/demoUI/scroll.html',

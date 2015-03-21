@@ -1,0 +1,14 @@
+<div style="background-color:#FFFFFF">
+	<div ui-content-for="title">
+		<span>Géolocation</span>
+	</div>
+	<div class="form-group has-success has-feedback">
+          <label>GéoLocalisation</label>
+          <label>Longitude : {{_location.longitude}} - Latitude : {{_location.latitude}} </label>
+         </br>
+         <button type="button" id="currentPosition" class="btn btn-warning" ng-click="getCurrentLocation()">getCurrentPosition</button>
+         <button type="button" id="reset" class="btn btn-warning" ng-click="reset()">reset</button>
+	</div>
+	
+	
+</div>
