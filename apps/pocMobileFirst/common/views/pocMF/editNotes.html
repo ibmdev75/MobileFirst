@@ -1,0 +1,34 @@
+<div ui-content-for="title">
+	<span>Edition de la note</span>
+</div>
+<div class="scrollable" ng-init="editNotesInit()">
+	<div class="scrollable-header">
+	</div>
+	<div class="scrollable-content" ng-show="editedNote">
+	    <form >
+            <div bs-panel title="">
+                <input bs-form-control type="text" ng-model="editedNote.texte" label="" label-class="col-xs-3 col-sm-2 col-lg-1" class="col-xs-10 col-sm-11 col-lg-12" placeholder="Texte" />
+                <button type="button" id="btnBack" class="btn btn-warning" data-style="expand-right" ng-click="backNote()">
+                    Retour
+                </button>
+                <button type="button" id="btnModify" class="btn btn-primary" data-style="expand-right" ng-click="modifyNote()">
+                    Enregistrer
+                </button>
+                <button type="button" id="btnErase" class="btn btn-danger" data-style="expand-right" ng-click="deleteNote()">
+                    Effacer
+                </button>
+            </div>
+        </form>
+	</div>
+	<div class="scrollable-footer"></div>
+	<!-- Bouton afficher dans le bandeau en haut de page -->
+	<div ui-content-for="navbarAction" duplicate>
+		<i class="btn fa fa-2x fa-refresh" ng-click="getNoteInfo()"></i> 
+		<i class="btn fa fa-2x fa-eraser" ng-click="search=null"></i> 
+		<i class="btn fa fa-2x fa-arrow-up" ng-click="gotoAnchor('sectionTop')"></i>
+	</div>
+	<div ui-content-for="modals">
+        <div ng-include="'views/demoUI/resize.html'"></div>
+        <div ng-include="'views/demoUI/instructions.html'"></div>
+    </div>
+</div>

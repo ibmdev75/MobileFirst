@@ -1,0 +1,109 @@
+﻿<div ui-content-for="title">
+	<span>Dossier</span>
+</div>
+<div class="scrollable" ng-init="init()">
+	<div class="scrollable-content">
+		<div id="sectionSearch" class="list-group">
+			<div class="list-group-item media">
+				<div class="media-body">
+					<h3 class="media-heading">
+						Choisir un client<i class="fa fa-group text-success pull-right"></i>
+					</h3>
+					<form class="form-inline" role="form">
+						<div class="input-group">
+							<input type="search" class="form-control input-sm" name="searchCritere" id="searchCritere" ng-enter="searchExec(searchCritere)" ng-model="searchCritere" value="" data-clear-btn="true" data-mini="true"
+								placeholder="N° Sociétaire"> <span class="input-group-addon" ng-click="searchExec(searchCritere)"><i class="fa fa-search"></i></span>
+						</div>
+						<select class="form-control input-sm" ng-options="item.numsous as item.nom group by item.ville for item in demoData" ng-model="searchCritere" ng-change="searchExec(searchCritere)"></select>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="sectionClient" class="list-group" ng-show="infoClient">
+			<div class="list-group-item media">
+				<div class="media-body">
+					<h3 class="media-heading">
+						{{infoClient.personne.nom}}<i class="fa fa-user text-success pull-right"></i>
+					</h3>
+					<div class="section">
+						<p>
+							GRC:<strong>{{infoClient.personne.noGRC}}</strong> - SIRET:<strong>{{infoClient.personne.noSIRET}}</strong>
+						</p>
+						<p class="small">Situation du {{infoClient.DateMAJ.dtSituation | filter:lstDate}}</p>
+					</div>
+					<div class="section">
+						<h4 class="bg_info">Coordonnées :</h4>
+						<div class="col-xs-12 col-md-6 col-lg-4" ng-repeat="adr in infoClient.personne.listeCoordonnees.coordonnees">
+							{{adr.typeCoordonnees}}
+							<address>
+								{{adr.rue}}<br> {{adr.cdPostal}} {{adr.ville}}<br> <abbr title="Téléphone Professionnel"><i class="fa fa-phone"></i></abbr>
+								<a href="tel:{{adr.noTelephone}}">{{adr.noTelephone}}</a>
+							</address>
+						</div>
+					</div>
+					<div class="section">
+						<h4>Sociétaires</h4>
+						<div class="col-xs-12 col-md-3 col-lg-4 social" ng-repeat="soc in infoClient.personne.listeSocietaires.societaire">
+							<h5>
+								<strong>{{soc.noSocietaire}}</strong> {{soc.cdSociete}}<small class="pull-right">{{soc.libEtatJuridique}} situation du {{soc.ddmaj | date:'short'}}</small>
+							</h5>
+							<table class="table table-condensed table-responsive">
+								<caption>Sites de rattachement</caption>
+								<tbody>
+									<tr class="warning">
+										<td>Contentieux</td>
+										<td>{{soc.rattachement.idSiteContentieux}}</td>
+									</tr>
+									<tr class="warning">
+										<td>Gestion Sinistre</td>
+										<td>{{soc.rattachement.idSiteContratSinistre}}</td>
+									</tr>
+									<tr class="warning">
+										<td>Décaissement</td>
+										<td>{{soc.rattachement.idSiteDecaissement}}</td>
+									</tr>
+									<tr class="warning">
+										<td>Encaissement</td>
+										<td>{{soc.rattachement.idSiteEncaissement}}</td>
+									</tr>
+									<tr class="warning">
+										<td>Gestion</td>
+										<td>{{soc.rattachement.idSiteGestion}}</td>
+									</tr>
+									<tr class="warning">
+										<td>Paiement</td>
+										<td>{{soc.rattachement.idSitePaiement}}</td>
+									</tr>
+									<tr class="warning">
+										<td>Recouvrement</td>
+										<td>{{soc.rattachement.idSiteRecouvrement}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="sectionContrat" class="list-group" ng-show="infoContrat">
+			<div class="list-group-item media">
+				<div class="media-body">
+					<h3 class="media-heading">
+						{{infoContrat.listeContrats.contrat.length}} Contrats<i class="fa fa-newspaper-o text-primary pull-right"></i>
+					</h3>
+					<p class="small">Situation du {{infoContrat.DateMAJ.dtSituation | filter:lstDate}}</p>
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-info" ng-repeat="ctn in infoContrat.listeContrats.contrat"><span ng-if="ctn.cdEtat='CO'" class="badge bg-blue">{{ctn.noPolice}}</span> <span ng-if="ctn.cdEtat!='CO'"
+							class="badge bg-red">{{ctn.noPolice}}</span> {{ctn.nmProduit}} ({{ctn.cdProduit}})<br>à éffet du {{ctn.dtDebEffet}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div ui-content-for="navbarAction" duplicate>
+	    <i class="btn fa fa-2x fa-group" ng-click="gotoAnchor('sectionSearch')"></i>
+		<i class="btn fa fa-2x fa-user" ng-click="gotoAnchor('sectionClient')"></i> 
+		<i class="btn fa fa-2x fa-newspaper-o" ng-click="gotoAnchor('sectionContrat')"></i>
+	</div>
+</div>

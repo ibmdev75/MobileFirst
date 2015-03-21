@@ -1,0 +1,36 @@
+<div class="modal" ui-if='modal_Instructions' ui-state='modal_Instructions'>
+	<div class="modal-backdrop in"></div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" ui-turn-off="modal_Instructions">&times;</button>
+				
+				<h4 class="modal-title"><img src="images/sma.png"> Instructions pour ajouter des cas d'évaluations</h4>
+			</div>
+			<div class="modal-body">
+			
+			<p>Cette application est développée sous <a href="https://angularjs.org/" target="_blank">AngularJS</a> et <a href="http://mobileangularui.com/docs/" target="_blank">Mobile Angular UI</a><br>Un exemple de page existe dans l'application sous le nom de TEMPLATE : </p>
+			<code>views/pocMF/template.html</code><br>
+			<code>js/controllers/template.js</code><br><br>
+			<h4>5 actions pour ajouter un cas d'usage :</h4>
+            <ul>
+                <li>1. ajouter une page web dans le dossier <code>views/pocMF</code></li>
+                <li>2. ajouter un controlleur Angular, dans le dossier <code>js/controllers</code></li>
+                <li>3. ajouter l'option de menu dans le fichier <code>views/sidebar.html</code></li>
+                <li>4. ajouter la route vers la nouvelle page et le nouveau controlleur dans le fichier <code>js/app.js</code></li>
+                <li>5. ajouter le scripts du controlleur dans le fichier <code>index.html</code></li>
+            </ul>
+            <h4>Liste des autres frameworks :</h4>
+            <ul>
+                <li><a href="http://jquery.com/" target="_blank">Jquery</a> : manipulation des objets DOM</li>
+                <li><a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a> : bibliothèque d'icônes</li>
+                <li><a href="http://sciactive.github.io/pnotify/" target="_blank">PNotify</a> : affichage de message</li>
+                <li><a href="http://chieffancypants.github.io/angular-loading-bar/" target="_blank">Angular Loading Bar</a> : barre de progression Http</li>
+            </ul>
+			</div>
+			<div class="modal-footer">
+				<button ui-turn-off="modal_Instructions" class="btn btn-default">Fermer</button>
+			</div>
+		</div>
+	</div>
+</div>

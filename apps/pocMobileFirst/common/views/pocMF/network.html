@@ -1,0 +1,50 @@
+
+<div ui-content-for="title">
+	<span>Network</span>
+</div>
+<div id="network" class="scrollable" ng-init="init()">
+	<div class="scrollable-content section">
+		<ul class="nav nav-tabs" ui-state='activeTab' ui-default='1'>
+			<li ui-class="{'active': activeTab == 1}"><a ui-set="{'activeTab': 1}">Connection</a></li>
+			<li ui-class="{'active': activeTab == 2}"><a ui-set="{'activeTab': 2}">Gélocation</a></li>
+			<li ui-class="{'active': activeTab == 3}"><a ui-set="{'activeTab': 3}">Info</a></li>
+		</ul>
+		<div ui-if="activeTab == 1">
+			<h3 class="page-header">Connection dectection
+			<p ui-state id='netStat' class="pull-right" ui-class="{'text-primary': netStat}" class="text-default"><i class="fa fa-3x fa-wifi"></i></p></h3>
+			<div id="header">
+				<h1>Working Offline</h1>
+				
+			</div>
+			<div id="wrapper">
+			 <div class="well">
+				<p>1. Set heartbeat to 5 seconds</p>
+				<p>2. Background application behavior can be seen using web debuggers</p>
+				<p>3. Shut down MobileFirst Server</p>
+				<p>4. In a few seconds heartbeat should fail, and <b><i>disconnectDetected</i></b> function should be invoked</p>
+				<p>5. Start up MobileFirst Server</p>
+				<p>6. In a few seconds heartbeat should succeed, and <b><i>connectDetected</i></b> function should be invoked</p>
+				<input type="button" id="setHeartBeatInterval" class="appButtons" value="Set heartbeat to 5 seconds" ng-click="setHeartBeatInterval(5);" />
+				<input type="button" class="appButtons" value="Info Network" ng-click="getNetInfo();" />
+				</div>
+				<div id="info" class="well">
+				    <h4>Information sur la connexion de l'application</h4>
+				    {{info}}
+				</div>
+				<div id="infoNet" class="well">
+				    <h4>Informations réseau</h4>{{netInfo}}
+				</div>
+				
+			</div>
+			<div ui-if="activeTab == 2">
+				<h3 class="page-header">Geolocation</h3>
+				<!-- ... -->
+			</div>
+			<div ui-if="activeTab == 3">
+				<h3 class="page-header">Info</h3>
+				<!-- ... -->
+			</div>
+		</div>
+	</div>
+	<div id="sectionSearch" class="list-group"></div>
+</div>div>

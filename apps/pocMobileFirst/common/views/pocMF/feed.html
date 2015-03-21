@@ -1,0 +1,66 @@
+<div ui-content-for="title">
+	<span>Rss</span>
+</div>
+<div class="scrollable" ng-init="init()">
+	<div class="scrollable-content">
+		<div class="section section-wide">
+			<div id="feedHome" class="section col-xs-12 col-md-6 col-lg-3">
+				<h2>Chercher un flux</h2>
+				<div class="input-group">
+					<span class="input-group-addon" ng-click="getFeeds(key);"><i class="fa fa-refresh"></i> {{lstFeeds.length}}</span> <input type="text" class="form-control input-sm" ng-enter="getFeeds(key);" ng-model="key"
+						placeholder="Mots clés..."> <span class="input-group-addon" ng-click="key=null"><i class="fa fa-eraser"></i></span>
+				</div>
+				<ul class="list-group">
+					<a class="list-group-item" ng-repeat="item in lstFeeds" ng-click="feedSelect(item)">
+						<h4 ng-bind-html="renderHtml(item.title)"></h4>
+						<p class="text-info small" ng-bind-html="renderHtml(item.contentSnippet)"></p>
+						<div class="row">
+							<p class="pull-left" ng-click="goSite(item.link)">
+								Voir le site <i class="fa fa-external-link"></i>
+							</p>
+							<p ng-if="item.url" class="text-info pull-right" ng-click="goSite(item.url)" data-toggle="tooltip" title="{{item.url}}">
+								<i class="fa fa-2x fa-rss"></i>
+							</p>
+						</div>
+					</a>
+				</ul>
+			</div>
+			<div id="feedsItem" class="section col-xs-12 col-md-6 col-lg-9" ng-if="loadFeeds">
+				<h2>
+					{{loadFeeds.title}} <span class="badge bg-blue pull-right" ng-click="feedSelect(curFeed)" data-toggle="tooltip" title="Cliquez pour actualiser"> <i class="fa fa-lg fa-refresh"></i>
+						{{loadFeeds.entries.length}}
+					</span>
+				</h2>
+				<h4>{{loadFeeds.description}}</h4>
+				<p>Auteur : {{loadFeeds.author}}</p>
+				<div class="input-group">
+					<span class="input-group-addon" ng-click="feedSelect(curFeed);"><i class="fa fa-refresh"></i> {{(loadFeeds.entries | filter:search).length}}</span> <input type="text" class="form-control input-sm"
+						ng-enter="getFeeds();" ng-model="search" placeholder="Filtrer..."> <span class="input-group-addon" ng-click="search=null"><i class="fa fa-eraser"></i></span>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="feed in loadFeeds.entries | filter:search">
+						<h4 ng-bind-html="renderHtml(feed.title)">
+							-<small>Publié le {{feed.publishedDate}}</small>
+						</h4>
+						<p class="text-info small" ng-bind-html="renderHtml(feed.contentSnippet)"></p>
+						<div class="well small" ng-bind-html="renderHtml(feed.content)"></div>
+						<ul class="list-inline">
+							<li ng-repeat="cat in feed.categories" class="keyword-list label label-info">{{cat}}</li>
+						</ul>
+						<div class="row">
+							<p class="pull-left">
+								<small>{{feed.publishedDate}}</small>
+							</p>
+							<p class="pull-right" ng-click="goSite(feed.link)" data-toggle="tooltip" title="{{feed.link}}">
+								Voir le site <i class="fa fa-external-link"></i>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div ui-content-for="navbarAction" duplicate>
+		<i class="btn fa fa-2x fa-arrow-up" ng-click="gotoAnchor('feedHome')"></i>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<div ui-content-for="title">
+	<span>Notes</span>
+</div>
+<div class="scrollable" ng-init="notesInit()">
+	<div class="scrollable-header">
+
+	</div>
+	<div class="scrollable-content" ng-show="listnotes">
+		<div id="sectionTop" class="input-group">
+			<span class="input-group-addon" ng-click="getInfo();"><i class="fa fa-refresh"></i> {{(listnotes |filter : search).length}}/{{listnotes.length}}</span>
+			 <input type="text" class="form-control input-sm" ng-model="search" placeholder="Filtrer...">
+		</div>
+		<div class="section section-wide">
+			<div class="list-group">
+				<div class="list-group-item" ng-repeat="note in listnotes | filter : search">
+				    <h4><a href="#/note/{{note.noteId}}"><small>{{note.dateModif| date:'mediumDate'}}</small> - {{note.badge}} - {{note.texte| limitTo:40}}</a></h4>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="scrollable-footer"></div>
+	<!-- Bouton afficher dans le bandeau en haut de page -->
+	<div ui-content-for="navbarAction" duplicate>
+		<i class="btn fa fa-2x fa-refresh" ng-click="getNotesInfo()"></i> 
+		<i class="btn fa fa-2x fa-eraser" ng-click="search=null"></i> 
+		<i class="btn fa fa-2x fa-arrow-up" ng-click="gotoAnchor('sectionTop')"></i>
+	</div>
+	<div ui-content-for="modals">
+        <div ng-include="'views/demoUI/resize.html'"></div>
+        <div ng-include="'views/demoUI/instructions.html'"></div>
+    </div>
+</div>

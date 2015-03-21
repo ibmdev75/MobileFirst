@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceDescription catalog="WSDL" id="ProductionServiceImplService_rechercherGaranties" adapter="soap" useNsPrefix="input">
+    <Name>rechercherGaranties</Name>
+    <Description></Description>
+    <Schemas>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://smabtp.fr/model/CommonTypes/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://smabtp.fr/service/transverse/ProductionService/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://smabtp.fr/service/transverse/ProductionService/1.0">
+
+<xsd:element name="lireContrat" type="tns:lireContrat"/>
+<xsd:element name="lireContratResponse" type="tns:lireContratResponse"/>
+<xsd:element name="lireGarantie" type="tns:lireGarantie"/>
+<xsd:element name="lireGarantieResponse" type="tns:lireGarantieResponse"/>
+<xsd:element name="lireObjet" type="tns:lireObjet"/>
+<xsd:element name="lireObjetResponse" type="tns:lireObjetResponse"/>
+<xsd:element name="productionServiceFault" type="tns:ProductionServiceFaultBean"/>
+<xsd:element name="rechercherContrats" type="tns:rechercherContrats"/>
+<xsd:element name="rechercherContratsResponse" type="tns:rechercherContratsResponse"/>
+<xsd:element name="rechercherContratsRetour" type="tns:rechercherContratsRetour"/>
+<xsd:element name="rechercherGaranties" type="tns:rechercherGaranties"/>
+<xsd:element name="rechercherGarantiesResponse" type="tns:rechercherGarantiesResponse"/>
+<xsd:element name="rechercherGarantiesRetour" type="tns:rechercherGarantiesRetour"/>
+<xsd:element name="rechercherObjets" type="tns:rechercherObjets"/>
+<xsd:element name="rechercherObjetsResponse" type="tns:rechercherObjetsResponse"/>
+<xsd:element name="rechercherObjetsRetour" type="tns:rechercherObjetsRetour"/>
+<xsd:complexType name="rechercherGaranties">
+<xsd:sequence>
+<xsd:element name="critereRechercherGaranties" type="tns:critereRechercherGaranties"/>
+<xsd:element name="criterePagination" type="ns1:criterePagination"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="critereRechercherGaranties">
+<xsd:sequence>
+<xsd:element name="cdSociete" type="xs:string"/>
+<xsd:element name="noSocietaire" type="xs:string"/>
+<xsd:element name="noPolice" type="xs:string"/>
+<xsd:element name="idPolice" type="xs:int"/>
+<xsd:element name="idObjet" type="xs:int"/>
+<xsd:element minOccurs="0" name="cdEtat" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherGarantiesResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="rechercherGarantiesRetour" type="tns:rechercherGarantiesRetour"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherGarantiesRetour">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="listeGaranties" type="tns:listeGaranties"/>
+<xsd:element minOccurs="0" name="DateMAJ" type="ns1:chargement"/>
+<xsd:element minOccurs="0" name="pagination" type="ns1:pagination"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="listeGaranties">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="garantie" nillable="true" type="tns:garantie"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="garantie">
+<xsd:sequence>
+<xsd:element name="idGarantie" type="xs:int"/>
+<xsd:element name="noOrdre" type="xs:decimal"/>
+<xsd:element name="cdGarantie" type="xs:string"/>
+<xsd:element name="dtSituation" type="xs:date"/>
+<xsd:element name="libGarantie" type="xs:string"/>
+<xsd:element name="cdEtat" type="xs:string"/>
+<xsd:element name="libEtat" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ProductionServiceFaultBean">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="erreurMessage" type="xs:string"/>
+<xsd:element minOccurs="0" name="erreurCode" type="ns1:TypeCodeErreur"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireObjet">
+<xsd:sequence>
+<xsd:element name="critereLireObjet" type="tns:critereLireObjet"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="critereLireObjet">
+<xsd:sequence>
+<xsd:element name="noSocietaire" type="xs:string"/>
+<xsd:element name="noPolice" type="xs:string"/>
+<xsd:element name="idObjet" type="xs:int"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireObjetResponse">
+<xsd:sequence>
+<xsd:element name="lireObjetRetour" type="tns:lireObjetRetour"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireObjetRetour">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="objet" type="tns:objet"/>
+<xsd:element minOccurs="0" name="detailObjet" type="tns:detailObjet"/>
+<xsd:element name="DateMAJ" type="ns1:chargement"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="objet">
+<xsd:sequence>
+<xsd:element name="idObjet" type="xs:int"/>
+<xsd:element name="nmObjet" type="xs:string"/>
+<xsd:element name="dtDebEffet" type="xs:date"/>
+<xsd:element minOccurs="0" name="dtFinEffet" type="xs:date"/>
+<xsd:element name="cdEtat" type="xs:string"/>
+<xsd:element name="libEtat" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdTypeRisque" type="xs:string"/>
+<xsd:element name="dtSituation" type="xs:date"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="detailObjet">
+<xsd:sequence>
+<xsd:element name="noObjet" type="xs:int"/>
+<xsd:element name="cdNatureObjet" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireGarantie">
+<xsd:sequence>
+<xsd:element name="critereLireGarantie" type="tns:critereLireGarantie"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="critereLireGarantie">
+<xsd:sequence>
+<xsd:element name="noSocietaire" type="xs:string"/>
+<xsd:element name="noPolice" type="xs:string"/>
+<xsd:element name="idPolice" type="xs:int"/>
+<xsd:element name="idObjet" type="xs:int"/>
+<xsd:element name="idGarantie" type="xs:int"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireGarantieResponse">
+<xsd:sequence>
+<xsd:element name="lireGarantieRetour" type="tns:lireGarantieRetour"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireGarantieRetour">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="garantie" type="tns:garantie"/>
+<xsd:element minOccurs="0" name="detailGarantie" type="tns:detailGarantie"/>
+<xsd:element name="DateMAJ" type="ns1:chargement"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="detailGarantie">
+<xsd:sequence>
+<xsd:element name="dtDebutEffet" type="xs:date"/>
+<xsd:element minOccurs="0" name="dtFinEffet" type="xs:date"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherContrats">
+<xsd:sequence>
+<xsd:element name="critereRechercherContrats" type="tns:critereRechercherContrats"/>
+<xsd:element name="criterePagination" type="ns1:criterePagination"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="critereRechercherContrats">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="noSocietaire" type="xs:string"/>
+<xsd:element minOccurs="0" name="noSiren" type="xs:int"/>
+<xsd:element minOccurs="0" name="typContrat" type="xs:string"/>
+<xsd:element minOccurs="0" name="listeCodeBranche" type="tns:listeCodeBranche"/>
+<xsd:element minOccurs="0" name="cdEtat" type="xs:string"/>
+<xsd:element minOccurs="0" name="dureeAncienneteResil" type="xs:int"/>
+<xsd:element minOccurs="0" name="UniteAncienneteResil" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+<xsd:element minOccurs="0" name="codesSociete" type="tns:codesSociete"/>
+<xsd:element minOccurs="0" name="nbAnneesSC" type="xs:int"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="listeCodeBranche">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="cdBranche" nillable="true" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="codesSociete">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="codeSociete" nillable="true" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherContratsResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="rechercherContratsRetour" type="tns:rechercherContratsRetour"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherContratsRetour">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="listeContrats" type="tns:listeContrats"/>
+<xsd:element minOccurs="0" name="DateMAJ" type="ns1:chargement"/>
+<xsd:element minOccurs="0" name="pagination" type="ns1:pagination"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="listeContrats">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="contrat" nillable="true" type="tns:contrat"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="contrat">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="noSocietaire" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSociete" type="xs:string"/>
+<xsd:element name="cdSociete" type="xs:string"/>
+<xsd:element name="idPolice" type="xs:int"/>
+<xsd:element name="noContrat" type="xs:int"/>
+<xsd:element name="noPolice" type="xs:string"/>
+<xsd:element name="typContrat" type="xs:string"/>
+<xsd:element name="cdBranche" type="xs:string"/>
+<xsd:element minOccurs="0" name="nmBranche" type="xs:string"/>
+<xsd:element name="cdProduit" type="xs:string"/>
+<xsd:element name="nmProduit" type="xs:string"/>
+<xsd:element name="cdEtat" type="xs:string"/>
+<xsd:element name="libEtat" type="xs:string"/>
+<xsd:element name="dtDebEffet" type="xs:date"/>
+<xsd:element minOccurs="0" name="dtFinEffet" type="xs:date"/>
+<xsd:element minOccurs="0" name="dateEffetSDC" type="xs:date"/>
+<xsd:element minOccurs="0" name="idMotifResiliation" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdMotifResiliation" type="xs:string"/>
+<xsd:element minOccurs="0" name="libMotifResiliation" type="xs:string"/>
+<xsd:element minOccurs="0" name="dtResiliation" type="xs:date"/>
+<xsd:element minOccurs="0" name="nmChantier" type="xs:string"/>
+<xsd:element name="idCentreGestion" type="xs:string"/>
+<xsd:element name="indRestitutionDonnees" type="xs:string"/>
+<xsd:element name="indAttestation" type="xs:string"/>
+<xsd:element name="indEligibleCMI" type="xs:string"/>
+<xsd:element name="indEligibleDeclarationEffectif" type="xs:string"/>
+<xsd:element name="indEligibleDeclarationAssiette" type="xs:string"/>
+<xsd:element name="indEligibleDeclarationSinistre" type="xs:string"/>
+<xsd:element name="indCharteInternet" type="xs:string"/>
+<xsd:element name="indAttestationTerme" type="xs:string"/>
+<xsd:element name="indRetourPieces" type="xs:string"/>
+<xsd:element name="indContratSpecifique" type="xs:string"/>
+<xsd:element name="indRetourUG" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdReceptionTravaux" type="xs:string"/>
+<xsd:element minOccurs="0" name="dtReceptionTravaux" type="xs:date"/>
+<xsd:element minOccurs="0" name="libelleSociete" type="xs:string"/>
+<xsd:element minOccurs="0" name="libelleContrat" type="xs:string"/>
+<xsd:element minOccurs="0" name="cotisationHtAnnualisee" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN1" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN2" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN3" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN4" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN5" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN6" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN7" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN8" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN9" type="xs:string"/>
+<xsd:element minOccurs="0" name="SCN10" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireContrat">
+<xsd:sequence>
+<xsd:element name="critereLireContrat" type="tns:critereLireContrat"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="critereLireContrat">
+<xsd:sequence>
+<xsd:element name="noSocietaire" type="xs:string"/>
+<xsd:element minOccurs="0" name="idPolice" type="xs:int"/>
+<xsd:element minOccurs="0" name="noPolice" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+<xsd:element minOccurs="0" name="nbAnneesSC" type="xs:int"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireContratResponse">
+<xsd:sequence>
+<xsd:element name="lireContratRetour" type="tns:lireContratRetour"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireContratRetour">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="contrat" type="tns:contrat"/>
+<xsd:element minOccurs="0" name="detailContrat" type="tns:detailContrat"/>
+<xsd:element name="DateMAJ" type="ns1:chargement"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="detailContrat">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="canalVente" type="xs:string"/>
+<xsd:element minOccurs="0" name="dtOuvertureChantier" type="xs:date"/>
+<xsd:element minOccurs="0" name="cdStatutChantier" type="xs:string"/>
+<xsd:element minOccurs="0" name="mtTravauxTTC" type="xs:int"/>
+<xsd:element minOccurs="0" name="adresseChantier1" type="xs:string"/>
+<xsd:element minOccurs="0" name="adresseChantier2" type="xs:string"/>
+<xsd:element minOccurs="0" name="adresseChantier3" type="xs:string"/>
+<xsd:element minOccurs="0" name="adresseChantier4" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdPostalChantier" type="xs:int"/>
+<xsd:element minOccurs="0" name="villeChantier1" type="xs:string"/>
+<xsd:element minOccurs="0" name="villeChantier2" type="xs:string"/>
+<xsd:element minOccurs="0" name="voie" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherObjets">
+<xsd:sequence>
+<xsd:element name="critereRechercherObjets" type="tns:critereRechercherObjets"/>
+<xsd:element name="criterePagination" type="ns1:criterePagination"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="critereRechercherObjets">
+<xsd:sequence>
+<xsd:element name="noSocietaire" type="xs:string"/>
+<xsd:element name="noPolice" type="xs:string"/>
+<xsd:element name="cdSociete" type="xs:string"/>
+<xsd:element name="idPolice" type="xs:int"/>
+<xsd:element minOccurs="0" name="cdEtat" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherObjetsResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="rechercherObjetsRetour" type="tns:rechercherObjetsRetour"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherObjetsRetour">
+<xsd:sequence>
+<xsd:element name="listeObjets" type="tns:listeObjets"/>
+<xsd:element name="DateMAJ" type="ns1:chargement"/>
+<xsd:element name="pagination" type="ns1:pagination"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="listeObjets">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="objet" nillable="true" type="tns:objet"/>
+</xsd:sequence>
+</xsd:complexType>
+</xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://smabtp.fr/service/transverse/ProductionService/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://smabtp.fr/model/CommonTypes/1.0" version="1.0">
+<xsd:complexType name="criterePagination">
+<xsd:sequence>
+<xsd:element name="nbItem" type="xs:int"/>
+<xsd:element name="noPage" type="xs:int"/>
+<xsd:element minOccurs="0" name="critereTri" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="chargement">
+<xsd:sequence>
+<xsd:element name="dtSituation" type="xs:date"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="pagination">
+<xsd:sequence>
+<xsd:element name="nbTotalItem" type="xs:int"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:simpleType name="TypeCodeErreur">
+<xsd:restriction base="xs:string">
+<xsd:enumeration value="BA_FONC_INVALID_PARAMETER"/>
+<xsd:enumeration value="BA_TECH_AUTRE"/>
+<xsd:enumeration value="BA_FONC_NON_BLOQUANTE"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xs:schema>
+    </Schemas>
+    <Procedure>
+        <Input>
+            <Parameter xmlns:ns2="http://smabtp.fr/service/transverse/ProductionService/1.0" elementName="ns2:rechercherGaranties" elementType="ns2:rechercherGaranties"/>
+        </Input>
+        <Output>
+            <Parameter xmlns:ns2="http://smabtp.fr/service/transverse/ProductionService/1.0" elementName="ns2:rechercherGarantiesResponse" elementType="ns2:rechercherGarantiesResponse"/>
+        </Output>
+    </Procedure>
+    <ProviderAttributes>
+        <item>
+            <name>endpointUrl</name>
+            <value>http://bazarect.orleanssrv.domsma/ba-web/production-service</value>
+        </item>
+        <item>
+            <name>bindingDescription</name>
+            <value></value>
+        </item>
+        <item>
+            <name>nsUri</name>
+            <value>http://smabtp.fr/service/transverse/ProductionService/1.0</value>
+        </item>
+        <item>
+            <name>soapAction</name>
+            <value>http://TRANSVERSE.smabtp.fr/RECHERCHE_GARANTIES_OBJET/1.0</value>
+        </item>
+        <item>
+            <name>soapVersion</name>
+            <value>SOAP v1.1</value>
+        </item>
+        <item>
+            <name>bindingName</name>
+            <value>ProductionServiceImplServiceSoapBinding</value>
+        </item>
+        <item>
+            <name>portName</name>
+            <value>productionServicePort</value>
+        </item>
+        <item>
+            <name>inputNS</name>
+            <value>xmlns:ns1=&quot;http://smabtp.fr/model/CommonTypes/1.0&quot; xmlns:tns=&quot;http://smabtp.fr/service/transverse/ProductionService/1.0&quot; </value>
+        </item>
+        <item>
+            <name>serviceName</name>
+            <value>ProductionServiceImplService</value>
+        </item>
+    </ProviderAttributes>
+    <SystemParameters/>
+</ServiceDescription>

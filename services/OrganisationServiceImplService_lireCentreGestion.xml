@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceDescription catalog="WSDL" id="OrganisationServiceImplService_lireCentreGestion" adapter="soap" useNsPrefix="input">
+    <Name>lireCentreGestion</Name>
+    <Description></Description>
+    <Schemas>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://smabtp.fr/model/CommonTypes/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://smabtp.fr/service/transverse/OrganisationService/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://smabtp.fr/service/transverse/OrganisationService/1.0">
+
+<xsd:element name="lireCentreGestion" type="tns:lireCentreGestion"/>
+<xsd:element name="lireCentreGestionResponse" type="tns:lireCentreGestionResponse"/>
+<xsd:element name="lireCentreGestionRetour" type="tns:lireCentreGestionRetour"/>
+<xsd:element name="lireStructureBDRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="codeBD" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="lireStructureBDResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="informationsStructureBD" type="tns:informationsStructureBD"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="organisationServiceFault" type="tns:OrganisationServiceFaultBean"/>
+<xsd:complexType name="lireCentreGestion">
+<xsd:sequence>
+<xsd:element name="critereLireCentreGestion" type="tns:critereLireCentreGestion"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="critereLireCentreGestion">
+<xsd:sequence>
+<xsd:element name="noSocietaire" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdCentreGestion" type="xs:string"/>
+<xsd:element minOccurs="0" name="idCentreGestion" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireCentreGestionResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="lireCentreGestionRetour" type="tns:lireCentreGestionRetour"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireCentreGestionRetour">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="CentreGestion" type="tns:CentreGestion"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="CentreGestion">
+<xsd:sequence>
+<xsd:element name="idCentreGestion" type="xs:string"/>
+<xsd:element name="cdCentreGestion" type="xs:string"/>
+<xsd:element name="libCentreGestion" type="xs:string"/>
+<xsd:element minOccurs="0" name="complIdentification" type="xs:string"/>
+<xsd:element minOccurs="0" name="complDistribution" type="xs:string"/>
+<xsd:element minOccurs="0" name="rue" type="xs:string"/>
+<xsd:element minOccurs="0" name="lieu" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdPostal" type="xs:string"/>
+<xsd:element minOccurs="0" name="ville" type="xs:string"/>
+<xsd:element minOccurs="0" name="noTelephone" type="xs:string"/>
+<xsd:element minOccurs="0" name="noTelecopie" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="OrganisationServiceFaultBean">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="erreurMessage" type="xs:string"/>
+<xsd:element minOccurs="0" name="erreurCode" type="ns1:TypeCodeErreur"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="informationsStructureBD">
+<xsd:sequence>
+<xsd:element name="cdBD" type="xs:string"/>
+<xsd:element name="libBD" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdEntiteCommerciale" type="xs:string"/>
+<xsd:element minOccurs="0" name="libEntiteCommerciale" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdAgenceCommerciale" type="xs:string"/>
+<xsd:element minOccurs="0" name="libAgenceCommerciale" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdDirectionRegionale" type="xs:string"/>
+<xsd:element minOccurs="0" name="libDirectionRegionale" type="xs:string"/>
+<xsd:element minOccurs="0" name="badgeResponsableCommercial" type="xs:string"/>
+<xsd:element minOccurs="0" name="badgeConseiller" type="xs:string"/>
+<xsd:element minOccurs="0" name="badgeAssistance" type="xs:string"/>
+<xsd:element minOccurs="0" name="badgeResponsableAgence" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://smabtp.fr/service/transverse/OrganisationService/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://smabtp.fr/model/CommonTypes/1.0" version="1.0">
+<xsd:complexType name="chargement">
+<xsd:sequence>
+<xsd:element name="dtSituation" type="xs:date"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="pagination">
+<xsd:sequence>
+<xsd:element name="nbTotalItem" type="xs:int"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="criterePagination">
+<xsd:sequence>
+<xsd:element name="nbItem" type="xs:int"/>
+<xsd:element name="noPage" type="xs:int"/>
+<xsd:element minOccurs="0" name="critereTri" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:simpleType name="TypeCodeErreur">
+<xsd:restriction base="xs:string">
+<xsd:enumeration value="BA_FONC_INVALID_PARAMETER"/>
+<xsd:enumeration value="BA_TECH_AUTRE"/>
+<xsd:enumeration value="BA_FONC_NON_BLOQUANTE"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xs:schema>
+    </Schemas>
+    <Procedure>
+        <Input>
+            <Parameter xmlns:ns2="http://smabtp.fr/service/transverse/OrganisationService/1.0" elementName="ns2:lireCentreGestion" elementType="ns2:lireCentreGestion"/>
+        </Input>
+        <Output>
+            <Parameter xmlns:ns2="http://smabtp.fr/service/transverse/OrganisationService/1.0" elementName="ns2:lireCentreGestionResponse" elementType="ns2:lireCentreGestionResponse"/>
+        </Output>
+    </Procedure>
+    <ProviderAttributes>
+        <item>
+            <name>endpointUrl</name>
+            <value>http://bazarect.orleanssrv.domsma/ba-web/organisation-service</value>
+        </item>
+        <item>
+            <name>bindingDescription</name>
+            <value></value>
+        </item>
+        <item>
+            <name>nsUri</name>
+            <value>http://smabtp.fr/service/transverse/OrganisationService/1.0</value>
+        </item>
+        <item>
+            <name>soapAction</name>
+            <value>http://TRANSVERSE.smabtp.fr/LIRE_CENTREGESTION/1.0</value>
+        </item>
+        <item>
+            <name>soapVersion</name>
+            <value>SOAP v1.1</value>
+        </item>
+        <item>
+            <name>bindingName</name>
+            <value>OrganisationServiceImplServiceSoapBinding</value>
+        </item>
+        <item>
+            <name>portName</name>
+            <value>OrganisationServicePort</value>
+        </item>
+        <item>
+            <name>inputNS</name>
+            <value>xmlns:ns1=&quot;http://smabtp.fr/model/CommonTypes/1.0&quot; xmlns:tns=&quot;http://smabtp.fr/service/transverse/OrganisationService/1.0&quot; </value>
+        </item>
+        <item>
+            <name>serviceName</name>
+            <value>OrganisationServiceImplService</value>
+        </item>
+    </ProviderAttributes>
+    <SystemParameters/>
+</ServiceDescription>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceDescription catalog="WSDL" id="DonneesClientServiceImplService_rechercherSouscripteurClient" adapter="soap" useNsPrefix="input">
+    <Name>rechercherSouscripteurClient</Name>
+    <Description></Description>
+    <Schemas>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://smabtp.fr/model/CommonTypes/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://smabtp.fr/service/transverse/DonneesClientService/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://smabtp.fr/service/transverse/DonneesClientService/1.0">
+
+<xsd:element name="donneesClientServiceFault" type="tns:DonneesClientServiceFaultBean"/>
+<xsd:element name="lireInformationsPersonne" type="tns:lireInformationsPersonne"/>
+<xsd:element name="lireInformationsPersonneResponse" type="tns:lireInformationsPersonneResponse"/>
+<xsd:element name="lireInformationsPersonneRetour" type="tns:lireInformationsPersonneRetour"/>
+<xsd:element name="rechercherSouscripteurClient" type="tns:rechercherSouscripteurClient"/>
+<xsd:element name="rechercherSouscripteurClientResponse" type="tns:rechercherSouscripteurClientResponse"/>
+<xsd:element name="rechercherSouscripteurClientRetour" type="tns:rechercherSouscripteurClientRetour"/>
+<xsd:complexType name="rechercherSouscripteurClient">
+<xsd:sequence>
+<xsd:element name="critereRechercherSouscripteurClient" type="tns:critereRechercherSouscripteurClient"/>
+<xsd:element name="criterePagination" type="ns1:criterePagination"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="critereRechercherSouscripteurClient">
+<xsd:sequence>
+<xsd:element name="noSocietaire" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherSouscripteurClientResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="rechercherSouscripteurClientRetour" type="tns:rechercherSouscripteurClientRetour"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="rechercherSouscripteurClientRetour">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="Pagination" type="ns1:pagination"/>
+<xsd:element minOccurs="0" name="ListeSouscripteur" type="tns:ListeSouscripteur"/>
+<xsd:element minOccurs="0" name="DateMAJ" type="ns1:chargement"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ListeSouscripteur">
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="souscripteur" nillable="true" type="tns:Souscripteur"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Souscripteur">
+<xsd:sequence>
+<xsd:element name="cdSociete" type="xs:string"/>
+<xsd:element name="libSociete" type="xs:string"/>
+<xsd:element name="noSocietaire" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdEtatJuridique" type="xs:string"/>
+<xsd:element minOccurs="0" name="libEtatJuridique" type="xs:string"/>
+<xsd:element name="ddmaj" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="DonneesClientServiceFaultBean">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="erreurMessage" type="xs:string"/>
+<xsd:element minOccurs="0" name="erreurCode" type="ns1:TypeCodeErreur"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireInformationsPersonne">
+<xsd:sequence>
+<xsd:element name="critereLireInformationsPersonne" type="tns:critereLireInformationsPersonne"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="critereLireInformationsPersonne">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="noSocietaire" type="xs:string"/>
+<xsd:element minOccurs="0" name="noSIRET" type="xs:string"/>
+<xsd:element minOccurs="0" name="noGRC" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdCanalAcces" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireInformationsPersonneResponse">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="lireInformationsPersonneRetour" type="tns:lireInformationsPersonneRetour"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="lireInformationsPersonneRetour">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="personne" type="tns:Personne"/>
+<xsd:element minOccurs="0" name="DateMAJ" type="ns1:chargement"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Personne">
+<xsd:sequence>
+<xsd:element name="nom" type="xs:string"/>
+<xsd:element minOccurs="0" name="noGRC" type="xs:string"/>
+<xsd:element minOccurs="0" name="noSIRET" type="xs:string"/>
+<xsd:element minOccurs="0" name="noSocietaire" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdTypePersonne" type="xs:string"/>
+<xsd:element minOccurs="0" name="etatIARD" type="xs:string"/>
+<xsd:element minOccurs="0" name="etatVie" type="xs:string"/>
+<xsd:element minOccurs="0" name="etatCourtage" type="xs:string"/>
+<xsd:element minOccurs="0" name="etatSAGEVIE" type="xs:string"/>
+<xsd:element minOccurs="0" name="indVIP" type="xs:string"/>
+<xsd:element minOccurs="0" name="indVIPPolitique" type="xs:string"/>
+<xsd:element minOccurs="0" name="nivVIPPolitique" type="xs:string"/>
+<xsd:element minOccurs="0" name="indVIPEcoIAR" type="xs:string"/>
+<xsd:element minOccurs="0" name="indVIPEcoVie" type="xs:string"/>
+<xsd:element minOccurs="0" name="indVIPPotentielIARD" type="xs:string"/>
+<xsd:element minOccurs="0" name="indVIPPotentielVie" type="xs:string"/>
+<xsd:element minOccurs="0" name="libAPE" type="xs:string"/>
+<xsd:element minOccurs="0" name="listeCoordonnees" type="tns:ListeCoordonnees"/>
+<xsd:element minOccurs="0" name="listeContacts" type="tns:ListeContacts"/>
+<xsd:element minOccurs="0" name="listeSocietaires" type="tns:ListeSocietaires"/>
+<xsd:element minOccurs="0" name="rattachement" type="tns:Rattachement"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ListeCoordonnees">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="id" type="xs:string"/>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="coordonnees" nillable="true" type="tns:Coordonnees"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Coordonnees">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="typeCoordonnees" type="xs:string"/>
+<xsd:element minOccurs="0" name="rue" type="xs:string"/>
+<xsd:element minOccurs="0" name="lieuDit" type="xs:string"/>
+<xsd:element minOccurs="0" name="complementDistribution" type="xs:string"/>
+<xsd:element minOccurs="0" name="complementIdentification" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdPostal" type="xs:string"/>
+<xsd:element minOccurs="0" name="ville" type="xs:string"/>
+<xsd:element minOccurs="0" name="pays" type="xs:string"/>
+<xsd:element minOccurs="0" name="noTelephone" type="xs:string"/>
+<xsd:element minOccurs="0" name="noTelecopie" type="xs:string"/>
+<xsd:element minOccurs="0" name="email" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ListeContacts">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="id" type="xs:string"/>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="contacts" nillable="true" type="tns:Contact"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Contact">
+<xsd:sequence>
+<xsd:element name="domaine" type="xs:string"/>
+<xsd:element name="badge" type="xs:string"/>
+<xsd:element name="nomPrenom" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ListeSocietaires">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="id" type="xs:string"/>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="societaire" nillable="true" type="tns:Societaire"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Societaire">
+<xsd:sequence>
+<xsd:element name="noSocietaire" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdSociete" type="xs:string"/>
+<xsd:element minOccurs="0" name="cdEtatJuridique" type="xs:string"/>
+<xsd:element minOccurs="0" name="libEtatJuridique" type="xs:string"/>
+<xsd:element name="ddmaj" type="xs:date"/>
+<xsd:element minOccurs="0" name="rattachement" type="tns:Rattachement"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Rattachement">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="idBdIARD" type="xs:string"/>
+<xsd:element minOccurs="0" name="idBdVie" type="xs:string"/>
+<xsd:element minOccurs="0" name="idBdCourtage" type="xs:string"/>
+<xsd:element minOccurs="0" name="idBdSagevie" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSegmentMarcheIARD" type="xs:int"/>
+<xsd:element minOccurs="0" name="libSegmentMarcheIARD" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSegmentMarcheVie" type="xs:int"/>
+<xsd:element minOccurs="0" name="libSegmentMarcheVie" type="xs:string"/>
+<xsd:element minOccurs="0" name="libMarcheVie" type="xs:string"/>
+<xsd:element minOccurs="0" name="idMarcheVie" type="xs:int"/>
+<xsd:element minOccurs="0" name="idMarcheIARD" type="xs:int"/>
+<xsd:element minOccurs="0" name="libMarcheIARD" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSiteGestion" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSiteRecouvrement" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSiteEncaissement" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSiteDecaissement" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSiteContentieux" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSiteContratSinistre" type="xs:string"/>
+<xsd:element minOccurs="0" name="idSitePaiement" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://smabtp.fr/service/transverse/DonneesClientService/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://smabtp.fr/model/CommonTypes/1.0" version="1.0">
+<xsd:complexType name="criterePagination">
+<xsd:sequence>
+<xsd:element name="nbItem" type="xs:int"/>
+<xsd:element name="noPage" type="xs:int"/>
+<xsd:element minOccurs="0" name="critereTri" type="xs:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="pagination">
+<xsd:sequence>
+<xsd:element name="nbTotalItem" type="xs:int"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="chargement">
+<xsd:sequence>
+<xsd:element name="dtSituation" type="xs:date"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:simpleType name="TypeCodeErreur">
+<xsd:restriction base="xs:string">
+<xsd:enumeration value="BA_FONC_INVALID_PARAMETER"/>
+<xsd:enumeration value="BA_TECH_AUTRE"/>
+<xsd:enumeration value="BA_FONC_NON_BLOQUANTE"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xs:schema>
+    </Schemas>
+    <Procedure>
+        <Input>
+            <Parameter xmlns:ns2="http://smabtp.fr/service/transverse/DonneesClientService/1.0" elementName="ns2:rechercherSouscripteurClient" elementType="ns2:rechercherSouscripteurClient"/>
+        </Input>
+        <Output>
+            <Parameter xmlns:ns2="http://smabtp.fr/service/transverse/DonneesClientService/1.0" elementName="ns2:rechercherSouscripteurClientResponse" elementType="ns2:rechercherSouscripteurClientResponse"/>
+        </Output>
+    </Procedure>
+    <ProviderAttributes>
+        <item>
+            <name>endpointUrl</name>
+            <value>http://bazarect.orleanssrv.domsma/ba-web/donneesClient-service</value>
+        </item>
+        <item>
+            <name>bindingDescription</name>
+            <value></value>
+        </item>
+        <item>
+            <name>nsUri</name>
+            <value>http://smabtp.fr/service/transverse/DonneesClientService/1.0</value>
+        </item>
+        <item>
+            <name>soapAction</name>
+            <value>http://TRANSVERSE.smabtp.fr/RECHERCHER_SOUSCRIPTEURS_CLIENT/1.0</value>
+        </item>
+        <item>
+            <name>soapVersion</name>
+            <value>SOAP v1.1</value>
+        </item>
+        <item>
+            <name>bindingName</name>
+            <value>DonneesClientServiceImplServiceSoapBinding</value>
+        </item>
+        <item>
+            <name>portName</name>
+            <value>donneesClientServicePort</value>
+        </item>
+        <item>
+            <name>inputNS</name>
+            <value>xmlns:ns1=&quot;http://smabtp.fr/model/CommonTypes/1.0&quot; xmlns:tns=&quot;http://smabtp.fr/service/transverse/DonneesClientService/1.0&quot; </value>
+        </item>
+        <item>
+            <name>serviceName</name>
+            <value>DonneesClientServiceImplService</value>
+        </item>
+    </ProviderAttributes>
+    <SystemParameters/>
+</ServiceDescription>

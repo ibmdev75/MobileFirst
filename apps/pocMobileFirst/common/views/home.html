@@ -1,0 +1,63 @@
+<div class="scrollable">
+	<div class="scrollable-content">
+		<div class="list-group text-center">
+			<div class="list-group-item list-group-item-home">
+				<h1>
+					<img src="images/sma.png"> Mobile First Evaluation <small>1.0</small>
+				</h1>
+			</div>
+			<div class="list-group-item list-group-item-home media" ng-controller="loginController">
+				<h1>Bienvenue</h1>
+				<div ng-show="authenticated">
+					<h3>{{greeting.name}} <small>{{greeting.content}}</small></h3>
+					<p></p>
+				</div>
+				<div ng-show="!authenticated">
+					<p>Pour profiter de nombreuses fonctionnalités supplémentaires, veuillez vous identifier. <a ng-show="!authenticated" href="#/login"><i class="fa fa-3x fa-user"></i></a></p>
+				</div>
+			</div>
+			<div class="list-group-item list-group-item-home media">
+				<div>
+					<i class="fa fa-gamepad feature-icon text-primary"></i>
+				</div>
+				<div class="media-body">
+					<h3 class="media-heading">Jouer avec les fonctions</h3>
+					Ouvrez les barres laterales et tester les fonctions
+				</div>
+			</div>
+			<div class="list-group-item list-group-item-home media">
+				<div>
+					<i class="fa fa-tachometer feature-icon  text-primary"></i>
+				</div>
+				<div class="media-body">
+					<h3 class="media-heading">Tester la réactivité et la vitesse</h3>
+					Scrollez, tapotez, naviguer, tester que tout est fluide
+				</div>
+			</div>
+			<div class="list-group-item list-group-item-home media">
+				<div>
+					<i class="fa fa-expand feature-icon  text-primary"></i>
+				</div>
+				<div class="media-body">
+					<h3 class="media-heading">Redimensionner votre navigateur</h3>
+					Étirer et réduire la fenêtre de votre navigateur pour voir les deux versions : mobiles et de bureau.<br>
+					<a href="" ui-turn-on="modal_Resize" class="btn btn-default">Tester...</a>
+				</div>
+			</div>
+
+			<div class="list-group-item list-group-item-home media">
+				<div>
+					<i class="fa fa-stethoscope feature-icon  text-primary"></i>
+				</div>
+				<div class="media-body">
+					<h3 class="media-heading">Ajouter de nouveaux tests</h3>
+					<a href="" ui-turn-on="modal_Instructions" class="btn btn-default">Instructions...</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ui-content-for="modals">
+		<div ng-include="'views/demoUI/resize.html'"></div>
+		<div ng-include="'views/demoUI/instructions.html'"></div>
+	</div>
+</div>

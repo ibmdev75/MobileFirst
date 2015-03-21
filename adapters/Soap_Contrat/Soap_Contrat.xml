@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wl:adapter xmlns:wl="http://www.ibm.com/mfp/integration" xmlns:http="http://www.ibm.com/mfp/integration/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Soap_Contrat">
+    <displayName>SoapAdapter2</displayName>
+    <description>Service de lecture des informations CONTRATS</description>
+    <connectivity>
+        <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+            <protocol>http</protocol>
+            <domain>bazarect.orleanssrv.domsma</domain>
+            <port>-1</port>
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+			<maxConcurrentConnectionsPerNode>2</maxConcurrentConnectionsPerNode>
+        </connectionPolicy>
+    </connectivity>
+
+    <procedure name="ProductionServiceImplService_lireContrat"/>
+    <procedure name="ProductionServiceImplService_lireGarantie"/>
+    <procedure name="ProductionServiceImplService_rechercherObjets"/>
+    <procedure name="ProductionServiceImplService_lireObjet"/>
+    <procedure name="ProductionServiceImplService_rechercherGaranties"/>
+    <procedure name="ProductionServiceImplService_rechercherContrats"/>
+</wl:adapter>

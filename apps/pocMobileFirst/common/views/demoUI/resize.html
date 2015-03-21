@@ -1,0 +1,27 @@
+<div class="modal" ui-if='modal_Resize' ui-state='modal_Resize'>
+	<div class="modal-backdrop in"></div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" ui-turn-off="modal_Resize">&times;</button>
+				<h4 class="modal-title">Redimensionner votre navigateur</h4>
+			</div>
+			<div class="modal-body">
+				<div class="btn-group">
+					<button ng-click="openWin()">Commencer par ouvrir une nouvelle fenêtre</button>
+					<button ng-click="resizeWinTo(320,480)">Iphone 4</button>
+					<button ng-click="resizeWinTo(375,667)">Iphone 6</button>
+					<button ng-click="resizeWinTo(1024,768)">Ipad</button>
+					<button ng-click="resizeWinTo(360,640)">Nexus 5 - Samsung S4</button>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button ui-turn-off="modal_Resize" class="btn btn-default">Fermer</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+

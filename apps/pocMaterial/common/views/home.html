@@ -1,0 +1,21 @@
+<div layout="row" ng-controller="homeCtrl">
+  <div flex="33" class="md-theme-indigo">
+    [flex="33"]
+    <md-autocomplete
+        ng-disabled="ctrl.isDisabled"
+        md-no-cache="ctrl.noCache"
+        md-selected-item="ctrl.selectedItem"
+        md-search-text="ctrl.searchText"
+        md-items="item in ctrl.querySearch(ctrl.searchText)"
+        md-item-text="item.display"
+        placeholder="What is your favorite US state?">
+      <span md-highlight-text="ctrl.searchText">{{item.display}}</span>
+    </md-autocomplete>
+  </div>
+  <div flex="55">
+    [flex="55"]
+  </div>
+  <div flex>
+    [flex]
+  </div>
+</div>

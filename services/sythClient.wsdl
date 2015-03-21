@@ -1,0 +1,87 @@
+<wsdl:definitions targetNamespace="http://smabtp.fr/service/souscripteur/SyntClientService/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:ns0="http://smabtp.fr/service/souscripteur/SyntClientService/1.0">
+<wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema targetNamespace="http://smabtp.fr/service/souscripteur/SyntClientService/1.0" xmlns:ns="http://smabtp.fr/service/souscripteur/SyntClientService/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="getSyntClient" type="ns:getSyntClient"/>
+<xsd:element name="getSyntClientResponse" type="ns:getSyntClientResponse"></xsd:element>
+<xsd:complexType name="getSyntClient">
+<xsd:sequence>
+<xsd:element name="refExtSouscripteur" type="xsd:string"></xsd:element>
+<xsd:element name="natExtSouscripteur" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="getSyntClientResponse">
+<xsd:sequence>
+<xsd:element name="NatureDossier" type="xsd:string"/>
+<xsd:element name="SystemeGestion" type="xsd:string"/>
+<xsd:element name="NumeroClientMK1" type="xsd:string"/>
+<xsd:element name="NumeroSouscripteurSMA" type="xsd:string"/>
+<xsd:element name="NumeroSIREN" type="xsd:string"/>
+<xsd:element name="NatureClient" type="xsd:string"/>
+<xsd:element name="NomOuRS" type="xsd:string"/>
+<xsd:element name="Prenom" type="xsd:string"/>
+<xsd:element name="Rue" type="xsd:string"/>
+<xsd:element name="CodePostal" type="xsd:string"/>
+<xsd:element name="Ville" type="xsd:string"/>
+<xsd:element name="Pays" type="xsd:string"/>
+<xsd:element name="CodeReseau" type="xsd:string"/>
+<xsd:element name="NumeroDBIARD" type="xsd:string"/>
+<xsd:element name="NomBDIARD" type="xsd:string"/>
+<xsd:element name="AdresseDBIARD" type="xsd:string"/>
+<xsd:element name="TelephoneDBIARD" type="xsd:string"/>
+<xsd:element name="FaxDBIARD" type="xsd:string"/>
+<xsd:element name="NumeroBDSGB" type="xsd:string"/>
+<xsd:element name="NomBDSGB" type="xsd:string"/>
+<xsd:element name="AdresseBDSGB" type="xsd:string"/>
+<xsd:element name="TelephoneBDSGB" type="xsd:string"/>
+<xsd:element name="FaxBDSGB" type="xsd:string"/>
+<xsd:element name="NumeroDBVie" type="xsd:string"/>
+<xsd:element name="NomBDVie" type="xsd:string"/>
+<xsd:element name="AdresseDBVie" type="xsd:string"/>
+<xsd:element name="TelephoneDBVie" type="xsd:string"/>
+<xsd:element name="FaxDBVie" type="xsd:string"/>
+<xsd:element name="NumeroPosteOperationnel" type="xsd:string"/>
+<xsd:element name="NumeroIntervenantPosteOperationnel" type="xsd:string"/>
+<xsd:element name="NomIntervenant" type="xsd:string"/>
+<xsd:element name="PrenomIntervenant" type="xsd:string"/>
+<xsd:element name="TelephoneIntervenant" type="xsd:string"/>
+<xsd:element name="EmailIntervenant" type="xsd:string"/>
+<xsd:element name="NumeroSiteGestion" type="xsd:string"/>
+<xsd:element name="NomSG" type="xsd:string"/>
+<xsd:element name="AdresseSG" type="xsd:string"/>
+<xsd:element name="TelephoneSG" type="xsd:string"/>
+<xsd:element name="FaxSG" type="xsd:string"/>
+<xsd:element name="SoldeClient" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="getSyntClient">
+<wsdl:part name="parameters" element="xsns:getSyntClient" xmlns:xsns="http://smabtp.fr/service/souscripteur/SyntClientService/1.0"/>
+</wsdl:message>
+<wsdl:message name="getSyntClientResponse">
+<wsdl:part name="parameters" element="xsns:getSyntClientResponse" xmlns:xsns="http://smabtp.fr/service/souscripteur/SyntClientService/1.0"/>
+</wsdl:message>
+<wsdl:portType name="syntClientService">
+<wsdl:operation name="getSyntClient">
+<wsdl:input name="getSyntClientRequest" message="ns0:getSyntClient"/>
+<wsdl:output name="getSyntClientResponse" message="ns0:getSyntClientResponse"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="syntClientServiceSOAP" type="ns0:syntClientService">
+<soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<wsdl:operation name="getSyntClient">
+<soap11:operation soapAction="cim://SOUSCRIPTEUR/SYNT_CLIENT/1.0" style="document"/>
+<wsdl:input name="getSyntClientRequest">
+<soap11:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getSyntClientResponse">
+<soap11:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="syntClientService">
+<wsdl:port name="syntClientServiceSOAP" binding="ns0:syntClientServiceSOAP">
+<soap11:address location="http://dt01d1.orleanssrv.domsma:10827/service/souscripteur/SyntClientService/1.0/"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

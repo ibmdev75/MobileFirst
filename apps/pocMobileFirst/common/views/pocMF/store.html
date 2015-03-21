@@ -1,0 +1,20 @@
+<div ui-content-for="title">
+	<span>JsonStore</span>
+</div>
+<div class="scrollable" ng-init="init()">
+    <div class="scrollable-header">
+
+    </div>
+	<div class="scrollable-content">
+    	<div ng-if="store" class="section section-wide">
+    	   <div class="list-group" ng-repeat="item in store">
+            <h4>{{item._id}} - {{item.json.personne.nom}} - {{item.json.personne.noGRC}}</h4>
+            <code>{{item.json}}</code>
+           </div>   
+        </div>
+	</div>
+    <div class="scrollable-footer"></div>
+    <div ui-content-for="navbarAction" duplicate>
+        <i class="btn fa fa-2x fa-refresh" ng-click="getStore()"></i>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<!-- 
+=================================================================================
+Template de création de page pour le poc Mobile First
+Structure de page à respecter pour bien s'insérer dans l'application
+
+Pour tous complements, s'adresser à SMABTP/DSI/ARC
+=================================================================================
+--> 
+<div ui-content-for="title">
+	<span>Template</span>
+</div>
+<div class="scrollable" ng-init="init()">
+	<div class="scrollable-header"><h3>Exemple de page avec des données locales</h3></div>
+	<div class="scrollable-content" ng-show="demoData">
+		<div id="sectionTop" class="input-group">
+			<span class="input-group-addon" ng-click="getInfo();"><i class="fa fa-refresh"></i> {{(demoData |filter : search).length}}/{{demoData.length}}</span>
+			 <input type="text" class="form-control input-sm" ng-model="search" placeholder="Filtrer...">
+		</div>
+		<div class="section section-wide">
+			<div class="list-group">
+				<div class="list-group-item" ng-repeat="item in demoData | filter : search">
+				    <h4>{{item.numcli}} - {{item.nom}} - <small>{{item.ville}}</small></h4>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="scrollable-footer"></div>
+	<!-- Bouton afficher dans le bandeau en haut de page -->
+	<div ui-content-for="navbarAction" duplicate>
+		<i class="btn fa fa-2x fa-refresh" ng-click="getInfo()"></i> 
+		<i class="btn fa fa-2x fa-eraser" ng-click="search=null"></i> 
+		<i class="btn fa fa-2x fa-arrow-up" ng-click="gotoAnchor('sectionTop')"></i>
+	</div>
+	<div ui-content-for="modals">
+        <div ng-include="'views/demoUI/resize.html'"></div>
+        <div ng-include="'views/demoUI/instructions.html'"></div>
+    </div>
+</div>
