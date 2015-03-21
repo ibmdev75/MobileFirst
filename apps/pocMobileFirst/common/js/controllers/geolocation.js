@@ -5,7 +5,6 @@
 var geoLocationCtrl = app.controller('geoLocationController', function($rootScope, $scope, $http) {
 	
 	$scope._location = {longitude:"",latitude:""};
-	$scope._currentDeviceContext = null;
 	$scope._options = {enableHighAccuracy: true,timeout: 5000,maximumAge: 0};
 	
 	// Part 1 : Fonctionnalités basiques de géolocalisation avec IBM Mobile First 
@@ -45,11 +44,16 @@ var geoLocationCtrl = app.controller('geoLocationController', function($rootScop
 	 */
 	
 	var _triggerCallBack = function() {
-		console.log("Votre position a changé de 100 mètres");
-		if($scope._currentDeviceContext ==null) {
-			$scope._currentDeviceContext = $scope.getDeviceContext();	
+		if(!$scope._currentDeviceContext || $scope._currentDeviceContext==null) {
+			$scope._currentDeviceContext = WL.Device.getContext();	
 		}
+		
+		if(!$scope._circleDeviceContext || $scope._circleDeviceContext==null) {
+			$scope._circleDeviceContext = {longitude:$scope._currentDeviceContext.Geo.coords.longitude,latitude:$scope._currentDeviceContext.Geo.coords.latitude,radius:500};
+		}
+		console.log("Votre position a changé de 100 mètres");
 		console.log("Distance réelle parcourue : "+$scope._calculateDistance($scope._currentDeviceContext,WL.Device.getContext()) +" mètres");
+		$scope._isInsideCircle(WL.Device.getContext(),$scope._circleDeviceContext);
 	}
 	
 	var _failureCallBack = function() {
@@ -59,8 +63,6 @@ var geoLocationCtrl = app.controller('geoLocationController', function($rootScop
 	var _acquisitionPolicy = {Geo : WL.Device.Geo.Profiles.LiveTracking()};
 	var _triggers = {Geo :{userMoved:{type : "PositionChange",minChangeDistance : 100,callback:_triggerCallBack}}};
 	var _failureOptions = {Geo : _failureCallBack};
-	
-	
 	
 	// Méthode affichant le Device Context courant
 	
@@ -74,6 +76,14 @@ var geoLocationCtrl = app.controller('geoLocationController', function($rootScop
 		var coordinate_end = {"longitude":end.Geo.coords.longitude,"latitude":end.Geo.coords.latitude};
 		var distance = WL.Geo.getDistanceBetweenCoordinates (coordinate_start, coordinate_end); 
 		return distance;
+	}
+	
+	// Méthode vérifiant si le device context courant se situe dans un cercle
+	
+	$scope._isInsideCircle = function(deviceContext, circle) {
+		var coordinate = {longitude:deviceContext.Geo.coords.longitude,latitude:deviceContext.Geo.coords.latitude,accuracy:deviceContext.Geo.coords.accuracy};
+		var isInsideCircle = WL.Geo.isInsideCircle (coordinate, circle); 
+		console.log("est dans le cercle ? : "+isInsideCircle);
 	}
 	
 	
